@@ -839,12 +839,12 @@ public Action Timer_Main(Handle hTimer) //1 second
 			//Alive infected
 			if (IsValidLivingZombie(iClient))
 			{
-				//If no special select cooldown is active and less than 2 people have been selected for the respawn into special infected
+				//If no special select cooldown is active 
 				//AND
 				//damage scale is 120% and a dice roll is hit OR the damage scale is 160%
 				if ( g_nRoundState == SZFRoundState_Active 
 					&& g_flSelectSpecialCooldown <= flGameTime 
-					&& GetReplaceRageWithSpecialInfectedSpawnCount() <= 2 
+					//&& GetReplaceRageWithSpecialInfectedSpawnCount() <= 2
 					&& g_nInfected[iClient] == Infected_None 
 					&& g_nNextInfected[iClient] == Infected_None 
 					&& g_bSpawnAsSpecialInfected[iClient] == false
@@ -854,7 +854,7 @@ public Action Timer_Main(Handle hTimer) //1 second
 				{
 					g_bSpawnAsSpecialInfected[iClient] = true;
 					g_bReplaceRageWithSpecialInfectedSpawn[iClient] = true;
-					g_flSelectSpecialCooldown = flGameTime + 20.0;
+					g_flSelectSpecialCooldown = flGameTime + 5.0;
 					CPrintToChat(iClient, "%t", "Infected_SelectedRespawn", "{green}", "{orange}");
 				}
 			}
