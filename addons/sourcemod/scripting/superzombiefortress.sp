@@ -848,9 +848,10 @@ public Action Timer_Main(Handle hTimer) //1 second
 					&& g_nInfected[iClient] == Infected_None 
 					&& g_nNextInfected[iClient] == Infected_None 
 					&& g_bSpawnAsSpecialInfected[iClient] == false
-					&& ( (g_flZombieDamageScale >= 1.0 
+					&& !GetRandomInt(0, 1)
+					/*&& ( (g_flZombieDamageScale >= 1.0 
 					&& !GetRandomInt(0, RoundToCeil(200 / g_flZombieDamageScale)))
-					|| g_flZombieDamageScale >= 1.6 ) )
+					|| g_flZombieDamageScale >= 1.6 ) */)
 				{
 					g_bSpawnAsSpecialInfected[iClient] = true;
 					g_bReplaceRageWithSpecialInfectedSpawn[iClient] = true;
