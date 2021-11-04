@@ -785,9 +785,9 @@ void EndGracePeriod()
 	g_bFirstRound = false;
 
 	float flGameTime = GetGameTime();
-	g_flTankCooldown = flGameTime + 120.0 - fMin(0.0, (iSurvivors-12) * 3.0); //2 min cooldown before tank spawns will be considered
-	g_flSelectSpecialCooldown = flGameTime + 120.0 - fMin(0.0, (iSurvivors-12) * 3.0); //2 min cooldown before select special will be considered
-	g_flRageCooldown = flGameTime + 60.0 - fMin(0.0, (iSurvivors-12) * 1.5); //1 min cooldown before frenzy will be considered
+	g_flTankCooldown = flGameTime + 60.0 - fMin(0.0, (iSurvivors-12) * 3.0); //1 min cooldown before tank spawns will be considered
+	g_flSelectSpecialCooldown = flGameTime + 30.0 - fMin(0.0, (iSurvivors-12) * 3.0); //0.5 min cooldown before select special will be considered
+	g_flRageCooldown = flGameTime + 30.0 - fMin(0.0, (iSurvivors-12) * 1.5); //0.5 min cooldown before frenzy will be considered
 	g_flSurvivorsLastDeath = flGameTime;
 }
 
