@@ -787,7 +787,7 @@ void EndGracePeriod()
 	float flGameTime = GetGameTime();
 	g_flTankCooldown = flGameTime + 60.0 - fMin(0.0, (iSurvivors-12) * 3.0); //1 min cooldown before tank spawns will be considered
 	g_flSelectSpecialCooldown = flGameTime + 30.0 - fMin(0.0, (iSurvivors-12) * 3.0); //0.5 min cooldown before select special will be considered
-	g_flRageCooldown = flGameTime + 30.0 - fMin(0.0, (iSurvivors-12) * 1.5); //0.5 min cooldown before frenzy will be considered
+	g_flRageCooldown = flGameTime + 60.0 - fMin(0.0, (iSurvivors-12) * 1.5); //0.5 min cooldown before frenzy will be considered
 	g_flSurvivorsLastDeath = flGameTime;
 }
 
@@ -839,9 +839,7 @@ public Action Timer_Main(Handle hTimer) //1 second
 			//Alive infected
 			if (IsValidLivingZombie(iClient))
 			{
-				//If no special select cooldown is active 
-				//AND
-				//damage scale is 120% and a dice roll is hit OR the damage scale is 160%
+				//If no special select cooldown is active and dice roll
 				if ( g_nRoundState == SZFRoundState_Active 
 					&& g_flSelectSpecialCooldown <= flGameTime 
 					//&& GetReplaceRageWithSpecialInfectedSpawnCount() <= 2
@@ -855,7 +853,7 @@ public Action Timer_Main(Handle hTimer) //1 second
 				{
 					g_bSpawnAsSpecialInfected[iClient] = true;
 					g_bReplaceRageWithSpecialInfectedSpawn[iClient] = true;
-					g_flSelectSpecialCooldown = flGameTime + 5.0;
+					g_flSelectSpecialCooldown = flGameTime + 15.0;
 					CPrintToChat(iClient, "%t", "Infected_SelectedRespawn", "{green}", "{orange}");
 				}
 			}
