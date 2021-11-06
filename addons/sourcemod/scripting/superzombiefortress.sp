@@ -834,22 +834,20 @@ public Action Timer_Main(Handle hTimer) //1 second
 		Handle_WinCondition();
 		
 		float flGameTime = GetGameTime();
-		for (int iClient = 1; iClient <= MaxClients; iClient++)
+		
+		while(g_flSelectSpecialCooldown <= flGameTime)
 		{
-			//Alive infected
+			int iClient = GetRandomInt(1, MaxClients);
+			
 			if (IsValidLivingZombie(iClient))
 			{
 				//If no special select cooldown is active and dice roll
 				if ( g_nRoundState == SZFRoundState_Active 
 					&& g_flSelectSpecialCooldown <= flGameTime 
-					//&& GetReplaceRageWithSpecialInfectedSpawnCount() <= 2
 					&& g_nInfected[iClient] == Infected_None 
 					&& g_nNextInfected[iClient] == Infected_None 
 					&& g_bSpawnAsSpecialInfected[iClient] == false
-					&& !GetRandomInt(0, 1)
-					/*&& ( (g_flZombieDamageScale >= 1.0 
-					&& !GetRandomInt(0, RoundToCeil(200 / g_flZombieDamageScale)))
-					|| g_flZombieDamageScale >= 1.6 ) */)
+					&& !GetRandomInt(0, 1))
 				{
 					g_bSpawnAsSpecialInfected[iClient] = true;
 					g_bReplaceRageWithSpecialInfectedSpawn[iClient] = true;
