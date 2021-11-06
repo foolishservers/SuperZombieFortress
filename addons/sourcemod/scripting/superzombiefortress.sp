@@ -833,29 +833,38 @@ public Action Timer_Main(Handle hTimer) //1 second
 	{
 		Handle_WinCondition();
 		
+		if(g_nRoundState != SZFRoundState_Active) return;
+		
 		float flGameTime = GetGameTime();
 		
-		while(g_flSelectSpecialCooldown <= flGameTime)
+		if(g_flSelectSpecialCooldown >= flGameTime) return;
+		
+		ArrayList InfectedList = new ArrayList();
+		
+		for(int iClient = 1; iClient <= MaxClients; iClient++)
 		{
-			int iClient = GetRandomInt(1, MaxClients);
-			
 			if (IsValidLivingZombie(iClient))
 			{
-				//If no special select cooldown is active and dice roll
-				if ( g_nRoundState == SZFRoundState_Active 
-					&& g_flSelectSpecialCooldown <= flGameTime 
-					&& g_nInfected[iClient] == Infected_None 
+				if (g_nInfected[iClient] == Infected_None 
 					&& g_nNextInfected[iClient] == Infected_None 
-					&& g_bSpawnAsSpecialInfected[iClient] == false
-					&& !GetRandomInt(0, 1))
+					&& g_bSpawnAsSpecialInfected[iClient] == false)
 				{
-					g_bSpawnAsSpecialInfected[iClient] = true;
-					g_bReplaceRageWithSpecialInfectedSpawn[iClient] = true;
-					g_flSelectSpecialCooldown = flGameTime + 15.0;
-					CPrintToChat(iClient, "%t", "Infected_SelectedRespawn", "{green}", "{orange}");
+					InfectedList.Push(iClient);
 				}
 			}
 		}
+		
+		InfectedList.Sort(Sort_Random, Sort_Integer);
+		
+		int iInfectedListLastIndex = InfectedList.Length - 1;
+		int iChosenSpecialInfectedClient = InfectedList.Get(GetRandomInt(0, iInfectedListLastIndex));
+		
+		InfectedList.Close();
+		
+		g_bSpawnAsSpecialInfected[iChosenSpecialInfectedClient] = true;
+		g_bReplaceRageWithSpecialInfectedSpawn[iChosenSpecialInfectedClient] = true;
+		g_flSelectSpecialCooldown = flGameTime + 15.0;
+		CPrintToChat(iChosenSpecialInfectedClient, "%t", "Infected_SelectedRespawn", "{green}", "{orange}");
 	}
 }
 
