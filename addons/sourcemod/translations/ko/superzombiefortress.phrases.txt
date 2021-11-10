@@ -1,0 +1,646 @@
+"Phrases"
+{
+	"Welcome"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"ko"		"{1}슈퍼 좀비 포트리스에 오신 것을 환영합니다! \n {2}/szf{3}를 입력하여 자세한 정보를 확인하세요."
+	}
+	
+	"Grace_Start"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}준비 시간입니다. 생존자는 병과를 선택하여 주십시오"
+	}
+	
+	"Grace_End"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}준비 시간이 끝났습니다. 생존자는 더 이상 병과를 변경할 수 없습니다."
+	}
+	
+	"Grace_InfectedBoost"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}라운드 시작 후 밸런스 조정을 위해 감염자는 일정시간 강해집니다."
+	}
+	
+	"Hud_Morale"
+	{
+		"ko"		"사기: {1}/100"
+	}
+	
+	"Frenzy_Start"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}좀비가 미쳐 날뛰고 있습니다! 감염자의 리스폰 시간이 짧아지고 공격력이 더 강해집니다!"
+	}
+	
+	"Frenzy_End"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}날뛰던 모든 좀비가 제압당했습니다."
+	}
+	
+	"Tank_Chosen"
+	{
+		"#format"	"{1:s},{2:s}"
+		"ko"		"{1} {2}님이 탱크가 됩니다!"
+	}
+	
+	"Tank_Called"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}탱크를 소환합니다."
+	}
+	
+	"Tank_Spawn"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}탱크가 옵니다!!!"
+	}
+	
+	"Tank_Died"
+	{
+		"#format"	"{1:N},{2:N},{3:d}"
+		"ko"		"탱크인 '{1}' 님이 죽었습니다.\n가장 많은 피해를 준 유저: {2} ({3})"
+	}
+	
+	"Tank_Multi_Died"
+	{
+		"#format"	"{1:d},{2:N},{3:d}"
+		"ko"		"{1} 탱크들이 당했습니다!\n가장 많은 피해를 준 유저: {2} ({3})"
+	}
+	
+	"Carry_Pickup"
+	{
+		"ko"		"'메딕!' 단축키를 눌러 아이템을 놓을 수 있습니다.\n아이템을 소지한 상태에서 공격이 가능합니다."
+	}
+	
+	"Weapon_Pickup"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"ko"		"{1}{2}{3} 주웠어!"
+	}
+	
+	"Weapon_Callout"
+	{
+		"#format"	"{1:s},{2:s},{3:s}"
+		"ko"		"여기에 {1}{2}{3} 있어!"
+	}
+	
+	"Survivor_Last"
+	{
+		"#format"	"{1:s},{2:s}"
+		"ko"		"{1}{2}님이 최후의 생존자입니다!"
+	}
+	
+	"Infected_Zombify"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}당신은 좀비에게 죽어 감염자가 되었습니다..."
+	}
+	
+	"Infected_SelectedRespawn"
+	{
+		"#format"	"{1:s},{2:s}"
+		"ko"		"{1}당신은 특수 좀비로 선택되었습니다! {2}'메딕!' 단축키를 눌러 특수 좀비가 될 수 있습니다!"
+	}
+	
+	"Infected_UsedQuickRespawn"
+	{
+		"#format"	"{1:s},{2:s},{3:s},{4:s}"
+		"ko"		"(TEAM) {1}{2} : 내가 {3}특수 좀비가 되었어{4}!"
+	}
+	
+	"Infected_AllInCooldown"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}모든 특수 좀비는 쿨타임을 갖게 됩니다..."
+	}
+	
+	"Infected_ForceStart"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}당신은 감염자로 플레이하는 것을 건너뛰려 했기에 강제로 감염자 팀으로 변경됩니다."
+	}
+	
+	"Infected_CallMedic"
+	{
+		"ko"		"'메딕!' 단축키를 눌러 특수 좀비로 부활하세요!"
+	}
+	
+	"Infected_RageReady"
+	{
+		"ko"		"분노가 준비됐습니다!"
+	}
+	
+	"Infected_RageReadyInSec"
+	{
+		"#format"	"{1:d}"
+		"ko"		"분노는 {1} 초 기다려야 합니다!"
+	}
+	
+	"Infected_CantUseRage"
+	{
+		"ko"		"지금은 분노를 사용할 수 없습니다!"
+	}
+	
+	"Infected_RageUsed"
+	{
+		"ko"		"분노가 사용되었습니다!"
+	}
+	
+	"Tutorial_SurvivorStart1"
+	{
+		"ko"		"슈퍼 좀비 포트리스에 오신 것을 환영합니다!"
+	}
+	
+	"Tutorial_SurvivorStart2"
+	{
+		"ko"		"생존자 전용 가이드입니다."
+	}
+	
+	"Tutorial_SurvivorStart3"
+	{
+		"ko"		"생존자의 목표는 살아남아 맵을 클리어하는 것입니다."
+	}
+	
+	"Tutorial_SurvivorStart4"
+	{
+		"ko"		"생존자는 처음에 근접 무기만 소지합니다."
+	}
+	
+	"Tutorial_SurvivorStart5"
+	{
+		"ko"		"무기를 바라보고 '메딕' 단축키를 누르거나 때림으로써 무기를 가질 수 있습니다."
+	}
+	
+	"Tutorial_SurvivorStart6"
+	{
+		"ko"		"감염자 중엔 일반 좀비가 있지만 특수 좀비도 있으니 조심하십시오!"
+	}
+	
+	"Tutorial_SurvivorStart7"
+	{
+		"ko"		"'/szf' 를 입력하여 더 자세한 정보를 확인하세요."
+	}
+	
+	"Tutorial_SurvivorStart8"
+	{
+		"ko"		"즐거운 시간 보내세요!"
+	}
+	
+	"Tutorial_ZombieStart1"
+	{
+		"ko"		"슈퍼 좀비 포트리스에 오신 것을 환영합니다!"
+	}
+	
+	"Tutorial_ZombieStart2"
+	{
+		"ko"		"감염자 전용 가이드입니다."
+	}
+	
+	"Tutorial_ZombieStart3"
+	{
+		"ko"		"감염자의 목표는 생존자를 몰살하는 겁니다."
+	}
+	
+	"Tutorial_ZombieStart4"
+	{
+		"ko"		"라운드가 진행되면서 특수 좀비가 될 수 있는 기회가 주어집니다."
+	}
+	
+	"Tutorial_ZombieStart5"
+	{
+		"ko"		"게다가, 라운드 후반에 일정 확률로 탱크도 될 수 있습니다."
+	}
+	
+	"Tutorial_ZombieStart6"
+	{
+		"ko"		"'/szf' 를 입력하여 더 자세한 정보를 확인하세요."
+	}
+	
+	"Tutorial_ZombieStart7"
+	{
+		"ko"		"즐거운 시간 보내세요!"
+	}
+	
+	"Tutorial_PickupCommon1"
+	{
+		"ko"		"당신은 무기를 얻었습니다."
+	}
+	
+	"Tutorial_PickupCommon2"
+	{
+		"ko"		"무기를 찾는 것은 생존의 핵심입니다."
+	}
+	
+	"Tutorial_PickupRare1"
+	{
+		"ko"		"당신은 강한 무기를 주웠습니다."
+	}
+	
+	"Tutorial_PickupRare2"
+	{
+		"ko"		"이렇게 강한 무기는 좀처럼 잘 나오지 않습니다."
+	}
+	
+	"Tutorial_Callout1"
+	{
+		"ko"		"무기가 있다는 사실을 알려 다른 팀원이 소지할 수 있도록 도와주십시오."
+	}
+	
+	"Tutorial_TankSpawn1"
+	{
+		"ko"		"탱크의 공격력은 매우 강력하니 조심하십시오."
+	}
+	
+	"Tutorial_TankSpawn2"
+	{
+		"ko"		"달리면서 탱크를 쏘십시오. 탱크는 피격 시 속도가 줄어듭니다."
+	}
+	
+	"Command_InfectedUsage"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}명령어: sm_infected [대상] [infected]"
+	}
+	
+	"Command_InfectedNoInfected"
+	{
+		"#format"	"{1:s},{2:s}"
+		"ko"		"{1}Unable to find infected \"{2}\""
+	}
+	
+	"Command_InfectedNoTarget"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}Could not find anyone to set next infected."
+	}
+	
+	"Command_InfectedNoZombie"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}Could not find any zombies to set next infected."
+	}
+	
+	"Command_InfectedSet"
+	{
+		"#format"	"{1:s},{2:d},{3:s}"
+		"ko"		"{1}Set {2} zombies to become next infected \"{3}\""
+	}
+	
+	"Command_MusicEnable"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}음악이 활성화되었습니다."
+	}
+	
+	"Command_MusicDisable"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}음악이 비활성화되었습니다."
+	}
+	
+	"JoinTeam_CantSwitchGrace"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}준비 시간에는 팀을 변경할 수 없습니다."
+	}
+	
+	"JoinTeam_WillJoinInfectedGrace"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}당신은 준비 시간이 끝나면 감염자 팀으로 변경됩니다."
+	}
+	
+	"JoinTeam_CancelGraceEnd"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}감염자 팀으로 변경이 취소되었습니다."
+	}
+	
+	"JoinTeam_CantJoinSurvivorGrace"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}지금은 생존자 팀에 참가할 수 없습니다. 당신은 준비 시간이 끝나면 감염자 팀에 참가하게 됩니다."
+	}
+	
+	"JoinClass_ValidZombies"
+	{
+		"#format"	"{1:s},{2:s}"
+		"ko"		"{1}Valid zombies:{2}."
+	}
+	
+	"JoinClass_ValidSurvivors"
+	{
+		"#format"	"{1:s},{2:s}"
+		"ko"		"{1}Valid survivors:{2}."
+	}
+	
+	"JoinClass_SurvivorsCantChange"
+	{
+		"#format"	"{1:s}"
+		"ko"		"{1}생존자는 라운드 진행 도중 병과를 변경할 수 없습니다."
+	}
+	
+	"SpecialInfected_Boomer"
+	{
+		"ko"		"{green}당신은 부머입니다.:\n{orange}- '메딕!' 단축키를 누르면 폭발해 생존자에게 자라테를 묻힐 수 있습니다!\n- 또한 사망해도 폭발하여 생존자에게 병수도를 묻힐 수 있습니다!"
+	}
+	
+	"SpecialInfected_Charger"
+	{
+		"ko"		"{green}당신은 차저입니다.:\n{orange}- '메딕!' 단축키를 누르면 돌진할 수 있습니다! {yellow}(16초 쿨타임)"
+	}
+	
+	"SpecialInfected_Screamer"
+	{
+		"ko"		"{green}당신은 스크리머입니다.:\n{orange}- '메딕!' 단축키를 누르면 좀비들을 강하게 만들 수 있습니다! {yellow}(21초 쿨타임){orange}\n- 당신의 주변에 있는 좀비들은 더 강해집니다."
+	}
+	
+	"SpecialInfected_Stalker"
+	{
+		"ko"		"{green}당신은 스토커입니다.:\n{orange}- 감염자가 주변에 없으면 은신 상태와 빠른 속도를 얻습니다!\n- 당신의 백스탭의 데미지는 더 증가했습니다."
+	}
+	
+	"SpecialInfected_Hunter"
+	{
+		"ko"		"{green}당신은 헌터입니다.:\n{orange}- '메딕!' 단축키를 누르면 생존자에게 달려들 수 있습니다! {yellow}(빗나갔을 경우 3초 & 맞췄을 경우 21초의 쿨타임)"
+	}
+	
+	"SpecialInfected_Smoker"
+	{
+		"ko"		"{green}당신은 스모커입니다.:\n{orange}- 우클릭을 누르면 생존자들을 끌어당기는 빔을 쏠 수 있습니다! {yellow}(쿨타임 없음)"
+	}
+	
+	"SpecialInfected_Spitter"
+	{
+		"ko"		"{green}당신은 스피터입니다.:\n{orange}- '메딕!' 단축키를 누르면 생존자에게 데미지를 입히는 가스통을 던질 수 있습니다! {yellow}(16 second cooldown)"
+	}
+	
+	"SpecialInfected_Jockey"
+	{
+		"ko"		"{green}당신은 자키입니다.:\n{orange}- '메딕!' 단축키를 누르면 높이 점프할 수 있으며, 생존자의 머리 위에 올라타 움직임을 통제할 수 있습니다! {yellow}(6초 쿨타임)"
+	}
+
+	"Melee_Atomizer"
+	{
+		"ko"		"{orange}인수분해 {green}적중 시, 적들을 밀쳐낼 수 있음 {red}삼단 점프와 공중에 있을 때 적용되는 소형 치명타 비활성화"
+	}
+	
+	"Melee_CandyCane"
+	{
+		"ko"		"{orange}지팡이 사탕 {red}착용 시 피해 10% 취약"
+	}
+	
+	"Melee_PainTrain"
+	{
+		"ko"		"{orange}고통행 열차 {red}착용 시 피해 10% 취약"
+	}
+	
+	"Melee_HalfZatochi"
+	{
+		"ko"		"{orange}반맹인검객 {red}무기를 들고 있을 때 체력이 조금씩 떨어짐"
+	}
+	
+	"Melee_MarketGardener"
+	{
+		"ko"		"{orange}마켓가든 모종삽 {green}착용 시 25% 더 높이 로켓 점프 가능"
+	}
+	
+	"Melee_KillingGlovesofBoxing"
+	{
+		"ko"		"{orange}K.G.B. {red}처치 시 5초 동안 소형 치명타"
+	}
+	
+	"Melee_FistsofSteel"
+	{
+		"ko"		"{orange}강철 주먹 {green}무기를 들고 있을 때 받는 근접 피해 -10%"
+	}
+	
+	"Melee_EurekaEffect"
+	{
+		"ko"		"{orange}유레카 효과 {green}주기적으로 금속을 얻음 {red}순간 이동 비활성화"
+	}
+	
+	"Melee_Ubersaw"
+	{
+		"ko"		"{orange}우버톱 {red}적중 시 우버차지 10% 추가"
+	}
+
+	"Melee_VitaSaw"
+	{
+		"ko"		"{orange}비타톱 {green}착용 시 우버 충전율 15%"
+	}
+	
+	"Melee_Amputator"
+	{
+		"ko"		"{orange}절단기 {red}도발로 근처에 있는 아군을 치료하는 기능 비활성화"
+	}
+	
+	"Melee_TribalmansShiv"
+	{
+		"ko"		"{orange}부족민의 칼 {green}'피해량 -50%'가 '피해량 -20%'로 변경"
+	}
+	
+	"PDA_DeadRinger"
+	{
+		"ko"		"{orange}데드 링어 {red}'은폐 지속 시간 +40%' 비활성화"
+	}
+	"PDA_CloakAndDagger"
+	{
+		"ko"		"{orange}망토와 단검 {red}은 작동하지 않습니다."
+	}
+	
+	"Menu_MainTitle"
+	{
+		"#format"	"{1:s},{2:s}"
+		"ko"		"슈퍼 좀비 포트리스 - 버전 {1}.{2}"
+	}
+	
+	"Menu_MainOverview"
+	{
+		"ko"		"모드 설명"
+	}
+	
+	"Menu_MainTeamSurvivor"
+	{
+		"ko"		"팀: 생존자"
+	}
+	
+	"Menu_MainTeamZombie"
+	{
+		"ko"		"팀: 감염자"
+	}
+	
+	"Menu_MainClassesSurvivor"
+	{
+		"ko"		"병과: 생존자"
+	}
+	
+	"Menu_MainClassesZombie"
+	{
+		"ko"		"병과: 감염자"
+	}
+	
+	"Menu_MainClassesInfected"
+	{
+		"ko"		"병과: 감염자 (특수)"
+	}
+	
+	"Menu_MainBack"
+	{
+		"ko"		"뒤로"
+	}
+	
+	"Menu_Overview"
+	{
+		"ko"		"생존자는 끝없는 감염자의 무리로부터 살아남아야 합니다.\n생존자가 죽으면 감염자 팀에 참가해 좀비가 됩니다.\n좀비는 생존자를 죽이기 위해 협동해야 합니다.\n생존자는 사기를 얻거나 무기를 가질 수 있고, 감염자는 특수 좀비가 되어 생존자를 잡을 수 있습니다."
+	}
+	
+	"Menu_TeamSurvivors"
+	{
+		"ko"		"생존자는 체력이 조금씩 회복되며, 사기가 증가함에 따라 데미지도 증가합니다.\n사기는 점령하거나 좀비를 죽임으로써 얻을 수 있으며, 시간이 지나면 서서히 줄어듭니다.\n생존자는 처음에 근접 무기만 주어지며, 맵을 진행하면서 무기를 ('메딕' 단축키, 마우스 클릭) 얻을 수 있습니다."
+	}
+	
+	"Menu_TeamZombie"
+	{
+		"ko"		"감염자는 뭉칠수록 더 강해지며, 추가 체력부여나 특수 능력을 사용할 수 있는 '분노'를 활성화할 수 있습니다.\n분노는 '메딕' 단축키로 활성화할 수 있으며, 쿨타임이 있습니다.\n일정 확률로 '메딕' 단축키를 눌러 특수 좀비로 변경할 수 있는 기회가 주어집니다."
+	}
+	
+	"Menu_ClassesSurvivorsScout"
+	{
+		"ko"		"최대 체력 +25\n처치 시 주무기 탄약 +2, 탄약 최대 용량에 상관없이 계속 추가"
+	}
+	
+	"Menu_ClassesSurvivorsSoldier"
+	{
+		"ko"		"처치 시 주무기 탄약 +1, 탄약 최대 용량에 상관없이 계속 추가"
+	}
+	
+	"Menu_ClassesSurvivorsPyro"
+	{
+		"ko"		"좀비를 불태우면 더 빨리 움직임\n화염 방사기의 탄약 최대 용량이 100으로 제한"
+	}
+	
+	"Menu_ClassesSurvivorsDemoman"
+	{
+		"ko"		"처치 시 주무기 탄약 +1, 탄약 최대 용량에 상관없이 계속 추가"
+	}
+	
+	"Menu_ClassesSurvivorsHeavy"
+	{
+		"ko"		"미니건의 탄약 최대 용량이 100으로 제한"
+	}
+	
+	"Menu_ClassesSurvivorsEngineer"
+	{
+		"ko"		"건설 도구 지급\n오직 센트리 건과 디스펜서만 건설가능, 업그레이드는 불가\n센트리 건의 탄약은 제한되어 있으며, 탄약을 보충할 수 없음\n디스펜서는 바리케이드로 사용되며, 더 많은 체력을 보유하였으나 탄약 보충은 못함"
+	}
+	
+	"Menu_ClassesSurvivorsMedic"
+	{
+		"ko"		"메디건의 치료 속도가 감소합니다."
+	}
+	
+	"Menu_ClassesSurvivorsSniper"
+	{
+		"ko"		"기관단총은 재장전하지 않아도 됨\n병수도는 적의 속도를 낮춤\n최대 체력 +25\n처치 시 주무기 탄약 +2, 탄약 최대 용량에 상관없이 계속 추가"
+	}
+	
+	"Menu_ClassesSurvivorsSpy"
+	{
+		"ko"		"은폐 시계와 변장 도구 지급\n처치 시 주무기 탄약 +2, 탄약 최대 용량에 상관없이 계속 추가"
+	}
+	
+	"Menu_ClassesInfectedScout"
+	{
+		"ko"		"상대방을 둔화시키는 공을 날릴 수 있는 샌드맨 지급\n보조 무기란에 음료 착용 가능"
+	}
+	
+	"Menu_ClassesInfectedSoldier"
+	{
+		"ko"		"무리를 지었을 때 증가하는 이동 속도와 초당 체력 회복량 감소\n보조무기 칸에 깃발 종류 착용 가능"
+	}
+	
+	"Menu_ClassesInfectedPyro"
+	{
+		"ko"		"적중 시 대상을 불태울 수 있는 날카로운 화산 파편 지급\n화상 피해 감소\n무리를 지었을 때 증가하는 이동 속도와 초당 체력 회복량 감소"
+	}
+	
+	"Menu_ClassesInfectedDemoman"
+	{
+		"ko"		"넓은 근접 공격 범위를 지닌 아이랜더 지급\n무리를 지으면 이동 속도가 줄어들고 초당 체력 회복량 감소"
+	}
+	
+	"Menu_ClassesInfectedHeavy"
+	{
+		"ko"		"무리를 지었을 때 증가하는 이동 속도와 초당 체력 회복량 감소\n보조 무기란에 음식을 착용할 수 있으며, 음식은 생존자에게 데미지를 줄 수 있음"
+	}
+	
+	"Menu_ClassesInfectedEngineer"
+	{
+		"ko"		"총잡이 지급\n생존자를 연속으로 타격할 경우 세 번째 공격은 감소된 데미지의 치명타 적용\n세 번째 타격 적중 시 대상에게 공포 효과 적용\n오직 소형 센트리 건과 디스펜서만 건설할 수 있으며, 업그레이드할 수 없음\n소형 센트리건의 탄약은 제한되어 있으며, 탄약을 보충할 수 없음"
+	}
+	
+	"Menu_ClassesInfectedMedic"
+	{
+		"ko"		"도발 시 주변의 아군을 치료할 수 있는 절단기 지급\n무리를 지었을 때 증가하는 초당 체력 회복량 감소"
+	}
+	
+	"Menu_ClassesInfectedSniper"
+	{
+		"ko"		"소형 치명타가 발생할 경우, 치명타로 적용되는 부시와카 지급\n보조 무기란에 야영 장비와 레이저백, 다윈산 차단막 착용 가능"
+	}
+	
+	"Menu_ClassesInfectedSpy"
+	{
+		"ko"		"백스텝은 생존자를 몇 초간 느린 속도와 무기를 못 쓰는 공포 상태로 만듦\n생존자는 백스텝을 당하면 데미지 저항을 얻음"
+	}
+	
+	"Menu_ClassesInfectedSpecialTank"
+	{
+		"ko"		"가장 강력하고 잔인한 감염자중 하나인 탱크는 생존자를 빠르게 쓰러뜨릴 수 있는 능력을 가지고 있습니다.\n- 탱크는 많은 체력을 가지고 있지만, 시간이 지나면 점점 줄어듭니다.\n- 탱크는 넉백의 영향을 전혀 받지 않습니다.\n- 탱크는 빠른 속도로 움직이지만, 피격 시 속도가 감소됩니다.\n- 탱크는 특정 조건이 만족되면 스폰합니다."
+	}
+	
+	"Menu_ClassesInfectedSpecialBoomer"
+	{
+		"ko"		"부머는 가장 역겹고 더러운 감염자입니다.\n- 분노를 사용하여 폭발하면, 주변에 있는 생존자는 병수도로 적셔집니다.\n- 또한 사망하면서 폭발할 수 있지만, 지속 시간이 짧고 범위가 좁습니다."
+	}
+	
+	"Menu_ClassesInfectedSpecialCharger"
+	{
+		"ko"		"차저는 내면엔 항상 분노로 가득해 정신 이상을 앓고 있는 감염자입니다.\n- 분노를 사용하여 돌진하면, 돌진 범위안에 있는 생존자를 끌고 갈 수 있습니다."
+	}
+	
+	"Menu_ClassesInfectedSpecialScreamer"
+	{
+		"ko"		"스크리머는 무리의 두목으로 생존자를 쓰러뜨리기 위해 전력을 다하는 감염자입니다.\n- 분노를 사용하면, 괴상한 소리와 함께 좀비들의 공격력을 증가시킵니다.\n- 스크리머는 좀비의 근처에 서서 그들의 사기를 증진합니다."
+	}
+	
+	"Menu_ClassesInfectedSpecialStalker"
+	{
+		"ko"		"스토커는 눈에 보이지 않으며 눈 깜짝할 사이에 생존자에게 접근할 수 있는 감염자입니다.\n- 스토커는 생존자가 주변에 없으면 항상 은신 상태를 유지합니다.\n- 백스텝의 데미지는 기본의 2.5배인 50 데미지입니다."
+	}
+	
+	"Menu_ClassesInfectedSpecialHunter"
+	{
+		"ko"		"헌터는 매우 빠르고 장애물을 쉽게 뛰어넘을 수 있는 감염자입니다.\n- 분노를 사용하면, 생존자에게 덤벼드는 도약을 할 수 있습니다.\n- 도약 중 생존자에게 부딪히면 생존자와 몸이 겹치며, 공포 상태로 만들 수 있습니다."
+	}
+	
+	"Menu_ClassesInfectedSpecialSmoker"
+	{
+		"ko"		"스모커는 생존자에게 데미지를 줄 수 있고 끌어당길 수 있는 빔을 쏠 수 있는 감염자입니다.\n- 끌어당기는 힘은 생존자의 체력이 낮을수록 더욱 강해집니다.\n- 분노를 사용할 수 없습니다."
+	}
+	
+	"Menu_ClassesInfectedSpecialSpitter"
+	{
+		"ko"		"스피터는 긴 목을 가지고 있으며, 생존자들에게 피해를 주는 가스로 가득 차 있습니다.\n- 분노를 사용하면, 스피터는 일정 시간 움직일 수 없고 생존자에게 피해를 주는 가스를 내뱉습니다.\n- 또한 사망 시에도 가스를 분출합니다.\n- 이 가스는 작은 공간에 있는 생존자 무리에게 큰 위협을 줍니다."
+	}
+	
+	"Menu_ClassesInfectedSpecialJockey"
+	{
+		"ko"		"자키는 생존자들의 머리에 매달려 움직임을 통제하는 감염자입니다.\n- 분노를 사용하면, 자키는 생존자의 머리에 매달릴 정도로 도약할 수 있다.\n- 자키는 생존자의 머리에 매달려 노는 것을 좋아합니다.\n자키는 공격할 수 없지만, 생존자 머리 위에 매달려 있을 때 조금씩 데미지를 주고 생존자의 이동을 거의 통제할 수 있습니다."
+	}
+}
