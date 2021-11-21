@@ -241,7 +241,7 @@ public Action Event_PlayerDeath(Event event, const char[] name, bool dontBroadca
 	if (!bDeadRinger && IsValidZombie(iKillers[1]) && iKillers[1] != iVictim)
 	{
 		//20%
-		if (g_nNextInfected[iVictim] == Infected_None && !GetRandomInt(0, 4) && g_nRoundState == SZFRoundState_Active)
+		if (g_nNextInfected[iVictim] == Infected_None && !GetRandomInt(0, 1) && g_nRoundState == SZFRoundState_Active)
 			g_bSpawnAsSpecialInfected[iKillers[1]] = true;
 	}
 	
@@ -286,7 +286,7 @@ public Action Event_PlayerDeath(Event event, const char[] name, bool dontBroadca
 		Classes_SetClient(iVictim, Infected_None);
 		
 		//10%
-		if (IsValidSurvivor(iKillers[0]) && !GetRandomInt(0, 9) && g_nRoundState == SZFRoundState_Active)
+		if (IsValidSurvivor(iKillers[0]) && !GetRandomInt(0, 1) && g_nRoundState == SZFRoundState_Active)
 			g_bSpawnAsSpecialInfected[iVictim] = true;
 		
 		//Set special infected state
