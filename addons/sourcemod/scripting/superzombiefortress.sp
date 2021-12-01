@@ -2415,6 +2415,24 @@ public Action OnPlayerRunCmd(int iClient, int &iButtons, int &iImpulse, float fV
 	
 	if (IsValidLivingZombie(iClient))
 	{
+		if((iButtons & IN_RELOAD) && !TF2_IsPlayerInCondition(iClient, TFCond_Taunting))
+		{
+			if (g_nRoundState == SZFRoundState_Active && g_bSpawnAsSpecialInfected[iClient] && g_bReplaceRageWithSpecialInfectedSpawn[iClient])
+			{
+				TF2_RespawnPlayer2(iClient);
+				
+				Forward_OnQuickSpawnAsSpecialInfected(iClient);
+				
+				//Broadcast to team
+				char sName[255];
+				GetClientName2(iClient, sName, sizeof(sName));
+				
+				for (int i = 1; i <= MaxClients; i++)
+					if (IsValidClient(i) && GetClientTeam(i) == GetClientTeam(iClient))
+						CPrintToChatEx(i, iClient, "%t", "Infected_UsedQuickRespawn", sName, "\x01", "{limegreen}", "\x01");
+			}
+		}
+	
 		if (g_ClientClasses[iClient].callback_think != INVALID_FUNCTION)
 		{
 			Call_StartFunction(null, g_ClientClasses[iClient].callback_think);

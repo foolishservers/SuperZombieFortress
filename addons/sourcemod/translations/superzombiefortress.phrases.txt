@@ -104,7 +104,7 @@
 	"Infected_SelectedRespawn"
 	{
 		"#format"	"{1:s},{2:s}"
-		"en"		"{1}You have been selected to become a Special Infected! {2}Call 'MEDIC!' to respawn as one or become one on death."
+		"en"		"{1}You have been selected to become a Special Infected! {2}Press 'Reload' button to respawn as one or become one on death."
 	}
 	
 	"Infected_UsedQuickRespawn"
@@ -127,7 +127,7 @@
 	
 	"Infected_CallMedic"
 	{
-		"en"		"Call 'MEDIC!' to respawn as a special infected!"
+		"en"		"Press '%%+reload%%' to respawn as a special infected!"
 	}
 	
 	"Infected_RageReady"
