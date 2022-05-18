@@ -834,11 +834,11 @@ public Action Timer_Main(Handle hTimer) //1 second
 	{
 		Handle_WinCondition();
 		
-		if(g_nRoundState != SZFRoundState_Active) return;
+		if(g_nRoundState != SZFRoundState_Active) return Plugin_Continue;
 		
 		float flGameTime = GetGameTime();
 		
-		if(g_flSelectSpecialCooldown >= flGameTime) return;
+		if(g_flSelectSpecialCooldown >= flGameTime) return Plugin_Continue;
 		
 		ArrayList InfectedList = new ArrayList();
 		
