@@ -1,6 +1,10 @@
 void SDKHook_OnEntityCreated(int iEntity, const char[] sClassname)
 {
-	if (StrContains(sClassname, "item_healthkit") == 0 || StrContains(sClassname, "item_ammopack") == 0 || StrEqual(sClassname, "tf_ammo_pack"))
+	if (StrEqual(sClassname, "prop_dynamic") && g_nRoundState == SZFRoundState_Active)
+	{
+		SDKHook(iEntity, SDKHook_SpawnPost, Prop_SetSpawnedWeapon);
+	}
+	else if (StrContains(sClassname, "item_healthkit") == 0 || StrContains(sClassname, "item_ammopack") == 0 || StrEqual(sClassname, "tf_ammo_pack"))
 	{
 		SDKHook(iEntity, SDKHook_SpawnPost, Pickup_SpawnPost);
 	}
@@ -37,6 +41,8 @@ public Action Client_Touch(int iClient, int iToucher)
 		Call_PushCell(iToucher);
 		Call_Finish();
 	}
+	
+	return Plugin_Continue;
 }
 
 public Action Client_OnTakeDamage(int iVictim, int &iAttacker, int &iInflicter, float &flDamage, int &iDamageType, int &iWeapon, float vecForce[3], float vecForcePos[3], int iDamageCustom)
@@ -221,6 +227,12 @@ public Action Client_GetMaxHealth(int iClient, int &iMaxHealth)
 	return Plugin_Continue;
 }
 
+public Action Prop_SetSpawnedWeapon(int iWeapon)
+{
+	SetWeapon(iWeapon);
+	return Plugin_Continue;
+}
+
 public void Pickup_SpawnPost(int iEntity)
 {
 	int iOwner = GetEntPropEnt(iEntity, Prop_Send, "m_hOwnerEntity");
@@ -271,10 +283,12 @@ public Action Timer_EnableSandvichTouch(Handle hTimer, int iRef)
 {
 	int iEntity = EntRefToEntIndex(iRef);
 	if (!IsValidEntity(iEntity))
-		return;
+		return Plugin_Continue;
 	
 	SDKUnhook(iEntity, SDKHook_Touch, Pickup_BlockTouch);
 	SDKHook(iEntity, SDKHook_Touch, Pickup_SandvichTouch);
+	
+	return Plugin_Continue;
 }
 
 public Action Pickup_SandvichTouch(int iEntity, int iToucher)

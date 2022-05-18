@@ -168,7 +168,7 @@ public Action Console_JoinClass(int iClient, const char[] sCommand, int iArgs)
 		}
 		
 		//It's invalid, then display which classes the player can choose
-		for (int i = 1; i < view_as<int>(TFClassType); i++)
+		for (int i = 1; i < view_as<int>(TFClass_Engineer) + 1; i++)
 		{
 			if (IsValidZombieClass(view_as<TFClassType>(i)))
 			{
@@ -203,7 +203,7 @@ public Action Console_JoinClass(int iClient, const char[] sCommand, int iArgs)
 		}
 		
 		//It's invalid, then display which classes the player can choose
-		for (int i = 1; i < view_as<int>(TFClassType); i++)
+		for (int i = 1; i < view_as<int>(TFClass_Engineer) + 1; i++)
 		{
 			if (IsValidSurvivorClass(view_as<TFClassType>(i)))
 			{
@@ -254,7 +254,21 @@ public Action Console_VoiceMenu(int iClient, const char[] sCommand, int iArgs)
 		
 		if (IsZombie(iClient) && !TF2_IsPlayerInCondition(iClient, TFCond_Taunting))
 		{
-			if (g_iRageTimer[iClient] == 0)
+			if (g_nRoundState == SZFRoundState_Active && g_bSpawnAsSpecialInfected[iClient] && g_bReplaceRageWithSpecialInfectedSpawn[iClient])
+			{
+				TF2_RespawnPlayer2(iClient);
+				
+				Forward_OnQuickSpawnAsSpecialInfected(iClient);
+				
+				//Broadcast to team
+				char sName[256];
+				GetClientName2(iClient, sName, sizeof(sName));
+				
+				for (int i = 1; i <= MaxClients; i++)
+					if (IsValidClient(i) && GetClientTeam(i) == GetClientTeam(iClient))
+						CPrintToChatEx(i, iClient, "%t", "Infected_UsedQuickRespawn", sName, "\x01", "{limegreen}", "\x01");
+			}
+			else if (g_iRageTimer[iClient] == 0)
 			{
 				Sound_PlayInfectedVo(iClient, g_nInfected[iClient], SoundVo_Rage);
 				g_iRageTimer[iClient] = g_ClientClasses[iClient].iRageCooldown;
