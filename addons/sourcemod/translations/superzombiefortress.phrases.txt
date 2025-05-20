@@ -397,6 +397,11 @@
 	{
 		"en"		"{orange}The Fists of Steel {green}gives 10%% melee resistance while active."
 	}
+
+	"Melee_EvictionNotice"
+	{
+		"en"		"{orange}The Eviction Notice {green}has its health drain disabled. {red}Marked-For-Death while active."
+	}
 	
 	"Melee_EurekaEffect"
 	{
@@ -490,7 +495,7 @@
 	
 	"Menu_ClassesSurvivorsScout"
 	{
-		"en"		"Has 25 extra max health.\nGains 2 primary ammo per kill, this can go beyond the usual maximum capacity of your weapon."
+		"en"		"Gains 2 primary ammo per kill, this can go beyond the usual maximum capacity of your weapon."
 	}
 	
 	"Menu_ClassesSurvivorsSoldier"
@@ -500,7 +505,7 @@
 	
 	"Menu_ClassesSurvivorsPyro"
 	{
-		"en"		"Burning zombies move faster.\nFlamethrower ammo limited to 100."
+		"en"		"Flamethrower ammo limited to 150."
 	}
 	
 	"Menu_ClassesSurvivorsDemoman"
@@ -510,12 +515,12 @@
 	
 	"Menu_ClassesSurvivorsHeavy"
 	{
-		"en"		"Minigun ammo limited to 100."
+		"en"		"Minigun ammo limited to 150."
 	}
 	
 	"Menu_ClassesSurvivorsEngineer"
 	{
-		"en"		"Starts with PDAs.\nCan only build sentries and dispensers, and cannot be upgraded.\nSentry ammo is limited, decays and cannot be replenished.\nDispensers act as walls, with higher health than usual but no ammo replenishment."
+		"en"		"Has 25 extra max health.\nStarts with PDAs.\nCan only build sentries and dispensers, and cannot be upgraded.\nSentry ammo is limited, decays and cannot be replenished.\nDispensers are minis, decays on health and ammo dispenses."
 	}
 	
 	"Menu_ClassesSurvivorsMedic"
@@ -525,7 +530,7 @@
 	
 	"Menu_ClassesSurvivorsSniper"
 	{
-		"en"		"SMG doesn't have to reload.\nJarate slows down Infected.\nHas 25 extra max health.\nGains 2 primary ammo per kill, this can go beyond the usual maximum capacity of your weapon."
+		"en"		"SMG ammo increased to 125.\nJarate slows down Infected.\nHas 25 extra max health.\nGains 2 primary ammo per kill, this can go beyond the usual maximum capacity of your weapon."
 	}
 	
 	"Menu_ClassesSurvivorsSpy"
