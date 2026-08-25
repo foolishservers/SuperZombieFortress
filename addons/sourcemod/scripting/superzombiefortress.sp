@@ -19,11 +19,11 @@
 
 #include "include/superzombiefortress.inc"
 
-#define PLUGIN_VERSION				"4.7.3"
+#define PLUGIN_VERSION				"4.7.5"
 #define PLUGIN_VERSION_REVISION		"manual"
 
-#define MAX_CONTROL_POINTS	8
-
+#define MAX_ATTRIBUTES_PER_ITEM		20
+#define MAX_CONTROL_POINTS			8
 #define MINI_DISPENSER_MAX_METAL	200	// It's actually still DISPENSER_MAX_METAL_AMMO of 400 the max for mini dispenser, this value is only used on hud displays
 
 #define ATTRIB_VISION		406
@@ -162,6 +162,14 @@ enum SZFRoundState
 	SZFRoundState_End,
 };
 
+enum ControlPointState
+{
+	CPState_Invalid = -1,
+	CPState_NotCapped = 0,
+	CPState_Capping,
+	CPState_Capped,
+};
+
 enum Infected
 {
 	Infected_Unknown = -1,
@@ -179,12 +187,20 @@ enum Infected
 	Infected_Count
 }
 
+enum struct ConfigAttributes
+{
+	int iCount;
+	int iIndex[MAX_ATTRIBUTES_PER_ITEM];
+	float flValue[MAX_ATTRIBUTES_PER_ITEM];
+	TFClassType nClass[MAX_ATTRIBUTES_PER_ITEM];
+}
+
 enum struct WeaponClasses
 {
 	int iIndex;
-	char sAttribs[256];
 	char sLogName[64];
 	char sIconName[64];
+	ConfigAttributes attribs;
 }
 
 enum struct ClientClasses
@@ -422,6 +438,8 @@ ConVar g_cvBannerRequirement;
 ConVar g_cvMeleeIgnoreTeammates;
 ConVar g_cvPunishAvoidingPlayers;
 
+ConVar g_cvFriendlyFire;
+
 enum struct ConVarEvent
 {
 	ConVar cvCooldown;
@@ -522,8 +540,7 @@ int g_iDamageDealtLife[MAXPLAYERS + 1];
 float g_flDamageDealtAgainstTank[MAXPLAYERS + 1];
 bool g_bTankRefreshed;
 
-int g_iControlPointsInfo[MAX_CONTROL_POINTS][2];
-int g_iControlPoints;
+ControlPointState g_iControlPointsInfo[MAX_CONTROL_POINTS];
 bool g_bCapturingLastPoint;
 int g_iCarryingItem[MAXPLAYERS + 1] = {INVALID_ENT_REFERENCE, ...};
 
@@ -565,7 +582,6 @@ Cookie g_cWeaponsCalled;
 //SDK offsets
 int g_iOffsetItemDefinitionIndex;
 
-#include "szf/weapons.sp"
 #include "szf/sound.sp"
 
 #include "szf/classes.sp"
@@ -576,6 +592,7 @@ int g_iOffsetItemDefinitionIndex;
 #include "szf/dhook.sp"
 #include "szf/event.sp"
 #include "szf/forward.sp"
+#include "szf/hitcooldown.sp"
 #include "szf/infected.sp"
 #include "szf/menu.sp"
 #include "szf/native.sp"
@@ -585,6 +602,7 @@ int g_iOffsetItemDefinitionIndex;
 #include "szf/stocks.sp"
 #include "szf/stun.sp"
 #include "szf/viewmodel.sp"
+#include "szf/weapons.sp"
 
 public Plugin myinfo =
 {
@@ -843,6 +861,8 @@ public void OnEntityDestroyed(int iEntity)
 {
 	if (!g_bEnabled || iEntity == INVALID_ENT_REFERENCE)
 		return;
+	
+	EntityKilled_HitDetectionCooldown(iEntity);
 	
 	char sClassname[256];
 	GetEntityClassname(iEntity, sClassname, sizeof(sClassname));
@@ -1718,10 +1738,28 @@ float GetMapProgress()
 	{
 		//iCurrentCP: +1 if CP currently capping, +2 if CP capped
 		int iCurrentCP = 0;
-		int iMaxCP = g_iControlPoints * 2;
+		int iMaxCP = 0;
 		
-		for (int i = 0; i < g_iControlPoints; i++)
-			iCurrentCP += g_iControlPointsInfo[i][1];
+		for (int i = 0; i < MAX_CONTROL_POINTS; i++)
+		{
+			switch (g_iControlPointsInfo[i])
+			{
+				case CPState_NotCapped:
+				{
+					iMaxCP += 2;
+				}
+				case CPState_Capping:
+				{
+					iCurrentCP += 1;
+					iMaxCP += 2;
+				}
+				case CPState_Capped:
+				{
+					iCurrentCP += 2;
+					iMaxCP += 2;
+				}
+			}
+		}
 		
 		//If there atleast 1 CP, set progress by amount of CP capped
 		float flProgress = 0.0;
@@ -2128,12 +2166,14 @@ void HandleSurvivorLoadout(int iClient)
 				float flGameTime = GetGameTime();
 				if (g_flStopChatSpam[iClient] < flGameTime && melee.sText[0])
 				{
-					CPrintToChat(iClient, "%t", melee.sText);
+					// Using first attrib listed to display its value
+					float flValue = TF2_TranslateAttributeValue(melee.attribs.iIndex[0], melee.attribs.flValue[0]);
+					CPrintToChat(iClient, "%t", melee.sText, RoundToNearest(flValue));
 					g_flStopChatSpam[iClient] = flGameTime + 1.0;
 				}
 					
 				//Apply attribute
-				TF2_WeaponApplyAttribute(iEntity, melee.sAttrib);
+				TF2_WeaponApplyAttribute(iClient, iEntity, melee.attribs);
 			}
 			
 			//This will refresh health max calculation and other attributes
@@ -2183,7 +2223,7 @@ void HandleZombieLoadout(int iClient)
 			if (!g_ClientClasses[iClient].GetWeaponFromIndex(GetEntProp(iWeapon, Prop_Send, "m_iItemDefinitionIndex"), weapon))
 				continue;	// how could this happen?
 			
-			TF2_WeaponApplyAttribute(iWeapon, weapon.sAttribs);
+			TF2_WeaponApplyAttribute(iClient, iWeapon, weapon.attribs);
 			continue;
 		}
 		
@@ -2191,7 +2231,7 @@ void HandleZombieLoadout(int iClient)
 		if (!g_ClientClasses[iClient].GetWeaponSlot(iSlot, weapon))	// picks one of the available weapon in slot at random
 			continue;
 		
-		TF2_CreateAndEquipWeapon(iClient, weapon.iIndex, weapon.sAttribs);
+		TF2_CreateAndEquipWeapon(iClient, weapon.iIndex, weapon.attribs);
 	}
 	
 	ViewModel_UpdateClient(iClient);
@@ -2392,10 +2432,9 @@ void ZombieTank(int iCaller = -1)
 void DetermineControlPoints()
 {
 	g_bCapturingLastPoint = false;
-	g_iControlPoints = 0;
 	
-	for (int i = 0; i < sizeof(g_iControlPointsInfo); i++)
-		g_iControlPointsInfo[i][0] = -1;
+	for (int i = 0; i < MAX_CONTROL_POINTS; i++)
+		g_iControlPointsInfo[i] = CPState_Invalid;
 	
 	int iMaster = -1;
 	int iEntity = -1;
@@ -2408,13 +2447,8 @@ void DetermineControlPoints()
 	iEntity = -1;
 	while ((iEntity = FindEntityByClassname(iEntity, "team_control_point")) != -1)
 	{
-		if (g_iControlPoints < sizeof(g_iControlPointsInfo))
-		{
-			int iIndex = GetEntProp(iEntity, Prop_Data, "m_iPointIndex");
-			g_iControlPointsInfo[g_iControlPoints][0] = iIndex;
-			g_iControlPointsInfo[g_iControlPoints][1] = 0;
-			g_iControlPoints++;
-		}
+		int iIndex = GetEntProp(iEntity, Prop_Data, "m_iPointIndex");
+		g_iControlPointsInfo[iIndex] = CPState_NotCapped;
 	}
 	
 	CheckRemainingCP();
@@ -2424,21 +2458,29 @@ void CheckRemainingCP()
 {
 	g_bCapturingLastPoint = false;
 	
-	if (g_iControlPoints <= 0)
-		return;
-	
-	int iCaptureCount = 0;
-	int iCapturing = 0;
-	for (int i = 0; i < g_iControlPoints; i++)
+	int iTotal, iCapturing, iCapped;
+	for (int i = 0; i < MAX_CONTROL_POINTS; i++)
 	{
-		if (g_iControlPointsInfo[i][1] >= 2)
-			iCaptureCount++;
-		
-		if (g_iControlPointsInfo[i][1] == 1)
-			iCapturing++;
+		switch (g_iControlPointsInfo[i])
+		{
+			case CPState_NotCapped:
+			{
+				iTotal++;
+			}
+			case CPState_Capping:
+			{
+				iTotal++;
+				iCapturing++;
+			}
+			case CPState_Capped:
+			{
+				iTotal++;
+				iCapped++;
+			}
+		}
 	}
 	
-	if (iCaptureCount == g_iControlPoints-1 && iCapturing > 0)
+	if (iCapped == iTotal-1 && iCapturing > 0)
 	{
 		g_bCapturingLastPoint = true;
 		Sound_PlayMusicToAll("laststand");
